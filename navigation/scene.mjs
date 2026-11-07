@@ -81,10 +81,11 @@ export function createScene(canvas, data, network, onPick) {
     const minY = Math.min(...ys), maxY = Math.max(...ys);
     const scale = state.viewSpan ? Math.min(width, height) / state.viewSpan * zoom
       : Math.min((width - 40) / (maxX - minX), (height - 58) / (maxY - minY)) * zoom;
-    const center = state.viewCenter ? raw(state.viewCenter, floor) : [(minX + maxX) / 2, (minY + maxY) / 2];
+    const anchorUV=state.followRoute&&state.current&&shown.has(state.current.level_id)?state.currentUV||network.positions.get(state.current.id):null;
+    const center = anchorUV ? raw(anchorUV,state.current.level_id) : state.viewCenter ? raw(state.viewCenter, floor) : [(minX + maxX) / 2, (minY + maxY) / 2];
     const project = (uv, level) => {
       const [x, y] = raw(uv, level);
-      return [(x - center[0]) * scale + width / 2, (y - center[1]) * scale + height / 2];
+      return [(x - center[0]) * scale + width / 2, (y - center[1]) * scale + height * (anchorUV ? .72 : .5)];
     };
     const point = node => project(network.positions.get(node.id), node.level_id);
 

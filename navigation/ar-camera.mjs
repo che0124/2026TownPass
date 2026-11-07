@@ -114,6 +114,7 @@ export function createAR(dialog, network, advance, updateMiniMap, getLanguage=()
     message = t("正在開啟後置鏡頭…");
     paint();
     try {
+      if(!window.isSecureContext||!navigator.mediaDevices?.getUserMedia)throw Object.assign(new Error('insecure'),{name:'SecurityError'});
       const media = await navigator.mediaDevices.getUserMedia({ video: { facingMode: { ideal: 'environment' } }, audio: false });
       if (id !== request || !dialog.open) {
         media.getTracks().forEach(track => track.stop());
@@ -137,8 +138,8 @@ export function createAR(dialog, network, advance, updateMiniMap, getLanguage=()
       if (id !== request) return;
       stop();
       message = error.name === 'NotAllowedError'
-        ? t('請允許相機，或關閉 AR 使用地圖。')
-        : t('相機無法使用，可回到地圖繼續導航。');
+        ? t('相機權限被拒絕。請在模擬器設定中允許 TownPass 使用相機，再重試；若仍被拒絕，請改用地圖。')
+        : error.name==='SecurityError'?t('相機需要 HTTPS 或 localhost 安全來源，請改用安全網址開啟。'):error.name==='NotFoundError'?t('模擬器找不到相機，請檢查虛擬裝置的相機設定。'):t('相機無法使用，可回到地圖繼續導航。');
       find('retry').hidden = false;
       paint();
     }

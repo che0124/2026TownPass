@@ -101,4 +101,9 @@ const copy = {
   }
 };
 Object.assign(copy,{"抵達轉角": {"en": "At the corner", "id": "Tiba di tikungan"}, "抵達地標": {"en": "At the landmark", "id": "Tiba di penanda"}, "請允許相機，或關閉 AR 使用地圖。": {"en": "Allow the camera, or close AR to use the map.", "id": "Izinkan kamera, atau tutup AR untuk memakai peta."}, "相機無法使用，可回到地圖繼續導航。": {"en": "Camera unavailable. You can use the map.", "id": "Kamera tidak tersedia. Gunakan peta."}, "相機已中斷": {"en": "Camera disconnected", "id": "Kamera terputus"}});
+Object.assign(copy,{
+ '相機權限被拒絕。請在模擬器設定中允許 TownPass 使用相機，再重試；若仍被拒絕，請改用地圖。':{en:'Camera permission denied. Allow camera access for TownPass in emulator settings and retry. If still denied, use the map.',id:'Izin kamera ditolak. Izinkan kamera untuk TownPass di pengaturan emulator, lalu coba lagi. Jika masih ditolak, gunakan peta.'},
+ '相機需要 HTTPS 或 localhost 安全來源，請改用安全網址開啟。':{en:'Camera requires HTTPS or localhost. Open a secure URL.',id:'Kamera memerlukan HTTPS atau localhost. Buka URL yang aman.'},
+ '模擬器找不到相機，請檢查虛擬裝置的相機設定。':{en:'No camera found. Check the virtual device camera settings.',id:'Kamera tidak ditemukan. Periksa pengaturan kamera perangkat virtual.'}
+});
 export const arText=(zh,lang)=>lang==='zh'?zh:(copy[zh]?.[lang]||zh);

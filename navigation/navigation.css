@@ -137,3 +137,5 @@ html.ar-open,html.ar-open body{overflow:hidden;overscroll-behavior:none}
 .help-intro h1{font-size:26px;line-height:1.4}
 .help-intro .primary{color:#fff;padding:12px 16px}
 .nav-footer{padding-top:12px}
+
+.nav-page-guide .heading-mode{min-height:48px;font-size:13px;color:#356c77;background:#edf8fa;border-color:#dbf1f5}.nav-page-guide .heading-mode[aria-pressed=true]{background:#356c77;color:#fff}
