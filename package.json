@@ -1,0 +1,16 @@
+{
+  "name": "station-photo-guide",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs",
+    "build": "npm run check && node scripts/build.mjs",
+    "deploy:preview": "firebase hosting:channel:deploy townpass-preview --expires 7d",
+    "deploy": "firebase deploy --only hosting"
+  },
+  "devDependencies": {
+    "firebase-tools": "^15.35.0"
+  }
+}

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#5AB4C5"><title>北車好走｜照片導航</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="navigation/navigation.css"></head><body><div class="app-shell"><div class="flow-tools" aria-label="Language"><button disabled id="language" class="language" aria-label="選擇語言" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg></button></div><main id="app"><p role="status">正在載入站內路網… / Loading station routes…</p></main></div><dialog id="dialog"><div id="dialog-content"></div><button class="secondary full" id="close-dialog">關閉 / Close</button></dialog><div id="toast" role="status" aria-live="polite"></div><script type="module" src="app.js"></script><dialog id="ar" aria-labelledby="ar-title">
+  <h2 id="ar-title" class="sr-only">AR 導航</h2>
+  <video data-ar="video" autoplay muted playsinline></video>
+  <canvas data-ar="ground" aria-hidden="true" hidden></canvas>
+  <button type="button" data-ar="close" class="ar-close" aria-label="關閉 AR">×</button>
+  <div class="ar-minimap"><span data-ar="floor"></span><canvas id="ar-map" aria-label="目前樓層與估算位置"></canvas></div>
+  <div class="ar-direction" data-ar="direction" hidden></div>
+  <section class="ar-bottom" aria-label="導航指引">
+    <div class="ar-meta"><span data-ar="segment"></span><span data-ar="progress"></span></div>
+    <strong data-ar="instruction"></strong>
+    <p class="ar-hint" data-ar="hint" role="status"></p>
+    <div class="ar-controls"><button type="button" data-ar="retry" hidden>重新開啟相機</button><button type="button" data-ar="next">抵達地標</button></div>
+  </section>
+</dialog></body></html>
